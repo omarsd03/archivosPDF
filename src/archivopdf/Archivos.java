@@ -25,7 +25,7 @@ public class Archivos {
         this.f = f;
     }*/
     
-    File f = new File("C:\\Users\\Omar\\Desktop\\horoscopos\\archivo.txt");
+    File f = new File("C:\\Users\\Omar\\Desktop\\horoscopos\\pdf.txt");
     
     public void Escribir(String mensaje) throws IOException {
         
@@ -40,16 +40,27 @@ public class Archivos {
     public ArrayList< ArrayList<String> > Leer() throws FileNotFoundException {
         
         Scanner s = new Scanner(f);
+        
+        ArrayList<ArrayList<String>>l=new ArrayList();
+        l.add(new ArrayList());
+        l.add(new ArrayList());
+        
         int contador = 0;
-        String cadena = "";
+        String cadena;
         String c[];
         
-        while(s.hasNextLine()) {
-            
-            contador++;
+        while(s.hasNext()) {
+            cadena = s.nextLine();
+            c = cadena.split(",");
+            /*for (int i = 0; i < c.length; i++){
+                l.get(contador).add(c[i]);
+                contador++;
+            }*/
+            l.get(1).add(c[0]);
+            l.get(0).add(c[1]);
         }
         
-        return cadena;
+        return l;
         
         //return s.nextLine();
         
